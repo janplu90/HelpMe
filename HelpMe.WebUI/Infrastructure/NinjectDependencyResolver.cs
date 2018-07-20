@@ -34,6 +34,7 @@ namespace HelpMe.WebUI.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
         }
     }
 }
