@@ -44,3 +44,9 @@ C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTe
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\Ninject.Web.Common.pdb
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\HelpMe.Domain.dll
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\HelpMe.Domain.pdb
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\Ninject.Web.Mvc.dll
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\EntityFramework.dll
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\Ninject.Web.Mvc.pdb
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\Ninject.Web.Mvc.xml
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\HelpMe.Domain.dll.config
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.UnitTests\bin\Debug\EntityFramework.xml

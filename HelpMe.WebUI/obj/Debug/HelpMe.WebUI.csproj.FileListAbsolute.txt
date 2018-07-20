@@ -39,3 +39,8 @@ C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\Ninject.pdb
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\Ninject.Web.Common.pdb
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\Ninject.Web.Mvc.pdb
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\EntityFramework.dll
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\EntityFramework.SqlServer.dll
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\HelpMe.Domain.dll.config
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\EntityFramework.xml
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.WebUI\bin\EntityFramework.SqlServer.xml
