@@ -10,5 +10,6 @@ namespace HelpMe.Domain.Abstract
     public interface IEventRepository
     {
         IEnumerable<Event> Events { get; }
+        void AddEvent(Event e);
     }
 }

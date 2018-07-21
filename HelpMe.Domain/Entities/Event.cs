@@ -9,8 +9,8 @@ namespace HelpMe.Domain.Entities
     public class Event
     {
         public int EventID { get; set; }
-        public User UserID { get; set; }
-        public User HelperID { get; set; }
+        public int CreatorID { get; set; }
+        public Nullable<int> HelperID { get; set; }
         public string Description { get; set; }
         public string Title { get; set; }
         public string Place { get; set; }

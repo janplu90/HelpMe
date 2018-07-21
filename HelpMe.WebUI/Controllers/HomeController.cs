@@ -14,14 +14,15 @@ namespace HelpMe.WebUI.Controllers
         private IReviewRepository reviewRepository;
 
 
-        public HomeController(IUserRepository userRepository, IReviewRepository reviewRepository)
+        public HomeController(IUserRepository userRepository, IReviewRepository reviewRepository, IEventRepository eventRepository)
         {
             this.repository = userRepository;
             this.reviewRepository = reviewRepository;
             //repository.AddUser();
             //repository.DeleteUser();
-            // repository.UpdateUser();
-            TestujemySobie(userRepository, reviewRepository);
+            //repository.UpdateUser();
+            //TestujemySobie(userRepository, reviewRepository);
+            DodawanieEventu(userRepository, eventRepository);
         }
 
         public ViewResult UserInfo(int page = 1)
@@ -49,6 +50,13 @@ namespace HelpMe.WebUI.Controllers
             reviewRepo.AddReview(new Review { Description = "Pierwsze review", Recommendation = true, WrittenByID = userBy.UserID, WrittenForID = userFor.UserID });
 
             
+        }
+
+        public void DodawanieEventu(IUserRepository repo, IEventRepository eventRepo)
+        {
+            User creator = new User();
+            creator = repo.Users.SingleOrDefault(t => t.Name == "Lebron");
+            eventRepo.AddEvent(new Event { HelperID = null, CreatorID = creator.UserID, Description = "drugi event", Title = "Pomożcie", Place = "Łódź", Date = DateTime.Now });
         }
     }
 }

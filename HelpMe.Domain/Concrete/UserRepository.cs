@@ -45,13 +45,17 @@ namespace HelpMe.Domain.Concrete
 
         public void UpdateUser()
         {
-            var test = context.Users.SingleOrDefault(t => t.Name == "Lebron");
+            var test = context.Users.SingleOrDefault(t => t.Name == "Casey");
 
-            if (test != null)
-            {
-                test.Login = "LBJ23";
-                context.SaveChanges();
-            }
+            //if (test != null)
+            //{
+            //    var rev = context.Reviews.SingleOrDefault(t => t.ReviewID == 1);
+            //    test.reviews = new List<Review>();
+            //    test.reviews.Add(rev);
+            //    context.SaveChanges();
+            //}
+            Console.WriteLine(test.reviews.First().ReviewID);
+            Console.ReadKey();
          
         }
 

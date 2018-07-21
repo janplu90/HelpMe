@@ -11,8 +11,8 @@ namespace HelpMe.Domain.Entities
         public int ReviewID { get; set; }
         public int WrittenByID { get; set; }
         public int WrittenForID { get; set; }
-        //public User WrittenBy { get; set; }
-        //public User WrittenFor { get; set; }
+        public User WrittenBy { get; set; }
+        public User WrittenFor { get; set; }
         public string Description { get; set; }
         public bool Recommendation { get; set; }
     }
