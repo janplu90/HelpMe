@@ -15,7 +15,7 @@ namespace HelpMe.Domain.Entities
         public string Title { get; set; }
         public string Place { get; set; }
         public DateTime Date { get; set; }
-        public bool IsAcctepted { get; set; }
-        public bool IsDone { get; set; }
+        public Nullable<bool> IsAcctepted { get; set; }
+        public Nullable<bool> IsDone { get; set; }
     }
 }
