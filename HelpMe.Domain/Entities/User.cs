@@ -14,6 +14,7 @@ namespace HelpMe.Domain.Entities
         public string Login { get; set; }
         public string Password { get; set; }
         public string Country { get; set; }
+        public string City { get; set; }
         public int Age { get; set; }
         public List<Event> events;
         public List<Review> reviews;

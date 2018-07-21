@@ -15,6 +15,9 @@ namespace HelpMe.WebUI.Controllers
         public HomeController(IUserRepository userRepository)
         {
             this.repository = userRepository;
+            repository.AddUser();
+            //repository.DeleteUser();
+            repository.UpdateUser();
         }
 
         public ViewResult UserInfo(int page = 1)
