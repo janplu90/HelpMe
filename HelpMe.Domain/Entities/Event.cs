@@ -8,6 +8,7 @@ namespace HelpMe.Domain.Entities
 {
     public class Event
     {
+        public int EventID { get; set; }
         public User UserID { get; set; }
         public User HelperID { get; set; }
         public string Description { get; set; }

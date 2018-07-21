@@ -10,5 +10,6 @@ namespace HelpMe.Domain.Abstract
     public interface IReviewRepository
     {
         IEnumerable<Review> Reviews { get; }
+        void AddReview(Review review);
     }
 }

@@ -33,11 +33,14 @@ namespace HelpMe.Domain.Concrete
             listaTestowa = context.Users.ToList();
             foreach( User user in listaTestowa)
             {
-                if (user.Name == "Lebron")
+                if (user.Login == "LBJ")
+                {
                     testowy = user;
-            }
-            context.Users.Remove(testowy);
-            context.SaveChanges();
+                    context.Users.Remove(testowy);
+                    context.SaveChanges();
+                }
+                }
+           
         }
 
         public void UpdateUser()
