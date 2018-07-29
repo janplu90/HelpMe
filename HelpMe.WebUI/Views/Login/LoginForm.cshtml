@@ -26,11 +26,18 @@
                 <div class="panel-heading">
                     <h3>Please Log in</h3>
                 </div>
+                @if (Model.ErrorMessage == true)
+                {
+                    <div class="alert alert-danger">
+                        Incorrect username or password
+                    </div>
+                    @Model.ErrorMessage = false;
+                }
                 <div class="panel-body">
                     @using (Html.BeginForm())
             {
                         <div class="form-group">
-                            <label>Login:</label>
+                            <label>Username:</label>
                             @Html.TextBoxFor(m => m.Login)
                         </div>
                         <div class="form-group">

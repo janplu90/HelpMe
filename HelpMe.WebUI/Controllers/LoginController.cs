@@ -26,10 +26,23 @@ namespace HelpMe.WebUI.Controllers
         [HttpPost]
         public ViewResult LoginForm(LoginFormViewModel model)
         {
-            if (model.Login == "jan")
-                return View("~/Views/Home/GoTo.cshtml");
+            if(repository.CheckIfUserExists(model.Login))
+            {
+                if (repository.CheckPassword(model.Login, model.Password))
+                {
+                    return View("~/Views/Home/GoTo.cshtml");
+                }
+                else
+                {
+                    model.ErrorMessage = true;
+                    return View(model);
+                }
+            }
             else
-                return View("Error");
+            {
+                model.ErrorMessage = true;
+                return View(model);
+            }
         }
 
         public ViewResult RegisterForm()

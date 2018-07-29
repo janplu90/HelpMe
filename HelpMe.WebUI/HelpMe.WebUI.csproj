@@ -199,6 +199,7 @@
     <Content Include="Views\Login\Error.cshtml" />
     <Content Include="Views\Home\GoTo.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\RegisterForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

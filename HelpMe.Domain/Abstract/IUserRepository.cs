@@ -13,5 +13,7 @@ namespace HelpMe.Domain.Abstract
         void AddUser();
         void DeleteUser();
         void UpdateUser();
+        bool CheckIfUserExists(string login);
+        bool CheckPassword(string login, string password);
     }
 }

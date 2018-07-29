@@ -59,6 +59,24 @@ namespace HelpMe.Domain.Concrete
          
         }
 
+        public bool CheckIfUserExists(string login)
+        {
+            var user = context.Users.SingleOrDefault(u => u.Login == login);
+            if (user == null)
+                return false;
+            else
+                return true;
+
+        }
+
+        public bool CheckPassword(string login, string password)
+        {
+            var user = context.Users.SingleOrDefault(u => u.Login == login);
+            if (user.Password == password)
+                return true;
+            else
+                return false;
+        }
 
 
 
