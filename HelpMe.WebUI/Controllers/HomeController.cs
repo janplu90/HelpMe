@@ -22,10 +22,15 @@ namespace HelpMe.WebUI.Controllers
             //repository.DeleteUser();
             //repository.UpdateUser();
             //TestujemySobie(userRepository, reviewRepository);
-            DodawanieEventu(userRepository, eventRepository);
+           // DodawanieEventu(userRepository, eventRepository);
         }
 
         public ViewResult UserInfo(int page = 1)
+        {
+            return View(repository.Users);
+        }
+        
+        public ViewResult HomePage()
         {
             return View(repository.Users);
         }
