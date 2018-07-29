@@ -16,7 +16,7 @@ namespace HelpMe.WebUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "HomePage", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "LoginForm", id = UrlParameter.Optional }
             );
         }
     }
