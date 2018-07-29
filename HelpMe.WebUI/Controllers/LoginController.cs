@@ -1,4 +1,5 @@
 ﻿using HelpMe.Domain.Abstract;
+using HelpMe.Domain.Entities;
 using HelpMe.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,19 @@ namespace HelpMe.WebUI.Controllers
 
         public ViewResult RegisterForm()
         {
-            return View("Register");
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult RegisterForm(User user)
+        {
+            if(ModelState.IsValid)
+            {
+                repository.AddUser(user);
+                return View("~/Views/Home/GoTo.cshtml");
+            }
+            else
+            return View();
         }
     }
 }

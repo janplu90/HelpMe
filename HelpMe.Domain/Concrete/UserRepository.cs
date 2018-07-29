@@ -17,13 +17,17 @@ namespace HelpMe.Domain.Concrete
             get { return context.Users; }
         }
 
-        public void AddUser()
+        ////RECZNIE
+        //public void AddUser()
+        //{
+        //    context.Users.Add(new User { Name = "Lebron", Surname = "James", Login = "LBJ", Password = "0000", Country = "USA", City = "Cleveland", Age = 33 });
+        //    context.SaveChanges();
+        //}
+
+        public void AddUser(User user)
         {
-            //User testowy = new User();
-            //testowy = context.Users.First();
-            context.Users.Add(new User { Name = "Lebron", Surname = "James", Login = "LBJ", Password = "0000", Country = "USA", City = "Cleveland", Age = 33 });
+            context.Users.Add(user);
             context.SaveChanges();
-            //context.Users.Add(testowy);
         }
 
         public void DeleteUser()

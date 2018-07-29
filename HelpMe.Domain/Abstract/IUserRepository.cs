@@ -10,7 +10,7 @@ namespace HelpMe.Domain.Abstract
     public interface IUserRepository
     {
         IEnumerable<User> Users { get; }
-        void AddUser();
+        void AddUser(User user);
         void DeleteUser();
         void UpdateUser();
         bool CheckIfUserExists(string login);

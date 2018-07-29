@@ -9,10 +9,50 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <title>RegisterForm</title>
 </head>
 <body>
-    <div> 
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"><h4>Registration</h4></div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <label>Name:</label>
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Surname:</label>
+                    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Login:</label>
+                    @Html.TextBoxFor(x => x.Login, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Country:</label>
+                    @Html.TextBoxFor(x => x.Country, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>City:</label>
+                    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Age:</label>
+                    @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-success" type="submit" value="Submit" />
+                </div>
+            }
+        </div>
     </div>
 </body>
 </html>
