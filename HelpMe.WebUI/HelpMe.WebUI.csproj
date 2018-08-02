@@ -167,7 +167,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\UserHomePanelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,7 +181,6 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Home\UserInfo.cshtml" />
     <Content Include="Views\Home\HomePage.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
@@ -200,6 +200,9 @@
     <Content Include="Views\Home\GoTo.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Login\RegisterForm.cshtml" />
+    <Content Include="Views\UserHomePanel\UserHomePanelForm.cshtml" />
+    <Content Include="Views\Navigation\LeftBar.cshtml" />
+    <Content Include="Views\UserHomePanel\AddEventForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

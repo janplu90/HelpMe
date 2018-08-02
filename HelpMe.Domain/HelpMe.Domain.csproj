@@ -70,17 +70,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEventRepository.cs" />
-    <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Abstract\IReviewRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
-    <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Concrete\EventRepository.cs" />
     <Compile Include="Concrete\HelpMeDBContext.cs" />
     <Compile Include="Concrete\ReviewRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="Entities\Event.cs" />
-    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

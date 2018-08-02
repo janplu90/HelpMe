@@ -11,6 +11,7 @@ namespace HelpMe.Domain.Abstract
     {
         IEnumerable<User> Users { get; }
         void AddUser(User user);
+        User getUser(string login);
         void DeleteUser();
         void UpdateUser();
         bool CheckIfUserExists(string login);

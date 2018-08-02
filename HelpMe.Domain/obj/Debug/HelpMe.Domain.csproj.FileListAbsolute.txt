@@ -21,3 +21,4 @@ C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.Domain
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.Domain\bin\Debug\EntityFramework.xml
 C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\janpl\Documents\Visual Studio 2017\Projects\Inzynierka1.0\HelpMe.Domain\obj\Debug\HelpMe.Domain.csprojResolveAssemblyReference.cache

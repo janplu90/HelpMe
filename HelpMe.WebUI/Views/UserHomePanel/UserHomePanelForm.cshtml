@@ -1,0 +1,33 @@
+﻿@using HelpMe.Domain.Entities
+@model IEnumerable<Event>
+
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserHomePanelForm</title>
+</head>
+<body>
+    <div> 
+        @*<h1>Jestem</h1>
+        <h3>@Model.Name</h3>
+        @Model.Surname
+        @Model.Country
+        <h4>@Model.Age</h4>*@
+
+@foreach (var e in Model)
+{
+    <div>
+        <h3>@e.Description</h3>
+        @e.Date
+        <h4>@e.Title</h4>
+    </div>
+}
+    </div>
+</body>
+</html>

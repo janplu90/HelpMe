@@ -82,6 +82,13 @@ namespace HelpMe.Domain.Concrete
                 return false;
         }
 
+        public User getUser(string login)
+        {
+            var user = context.Users.SingleOrDefault(u => u.Login == login);
+            return user;
+
+        }
+
 
 
     }

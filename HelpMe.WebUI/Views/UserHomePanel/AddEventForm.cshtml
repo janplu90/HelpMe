@@ -1,0 +1,58 @@
+﻿@model HelpMe.Domain.Entities.Event
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/flick/jquery-ui.min.css"
+          rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+	$(document).ready(function () {
+            $('.datefield').datepicker({
+                dateFormat: "mm/dd/yy",
+             });
+          });
+    </script>
+    <title>AddEventForm</title>
+</head>
+<body>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"><h4>Registration</h4></div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group">
+                    <label>Title:</label>
+                    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Description:</label>
+                    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Category:</label>
+                    @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Place:</label>
+                    @Html.TextBoxFor(x => x.Place, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Date:</label>
+                    @Html.TextBoxFor(x => x.Date,  new { @class = "datefield" })
+                </div>
+                <div class="text-center">
+                    <input class="btn btn-success" type="submit" value="Submit" />
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -25,13 +25,14 @@ namespace HelpMe.WebUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult LoginForm(LoginFormViewModel model)
+        public ActionResult LoginForm(LoginFormViewModel model)
         {
             if(repository.CheckIfUserExists(model.Login))
             {
                 if (repository.CheckPassword(model.Login, model.Password))
                 {
-                    return View("~/Views/Home/GoTo.cshtml");
+                    System.Web.HttpContext.Current.Session["UserLogin"] = model.Login;
+                    return RedirectToActionPermanent("UserHomePanelForm", "UserHomePanel");
                 }
                 else
                 {
@@ -52,12 +53,12 @@ namespace HelpMe.WebUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult RegisterForm(User user)
+        public ActionResult RegisterForm(User user)
         {
             if(ModelState.IsValid)
             {
                 repository.AddUser(user);
-                return View("~/Views/Home/GoTo.cshtml");
+                return RedirectToAction("HomePage", "Home", user.Login);
             }
             else
             return View();
