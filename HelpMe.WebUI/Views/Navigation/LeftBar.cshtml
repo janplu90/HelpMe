@@ -30,8 +30,11 @@
 })
     }
 
-    <div> 
+    <div>
         @Html.ActionLink("AddEvent", "AddEventForm", "UserHomePanel", null, new { @class = "btn btn-block btn-default btn-lg"})
+    </div>
+    <div>
+        @Html.ActionLink("YourEvents", "YourEventsForm", "UserHomePanel", null, new { @class = "btn btn-block btn-default btn-lg" })
     </div>
 </body>
 </html>

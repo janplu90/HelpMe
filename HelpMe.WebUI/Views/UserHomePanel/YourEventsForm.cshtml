@@ -1,0 +1,35 @@
+﻿@using HelpMe.WebUI.HtmlHelpers;
+@model HelpMe.WebUI.Models.EventListViewModel
+
+@{
+ 
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>YourEventsForm</title>
+</head>
+<body>
+    <div>
+        @foreach (var e in Model.Events)
+        {
+            <div class="well">
+                <strong>@e.Title</strong>
+                @e.Date
+                <span class="lead">@e.Description</span>
+
+
+            </div>
+        }
+
+        <div class="btn-group pull-right">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("YourEventsForm", new { page = x}))
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -206,6 +206,7 @@
     <Content Include="Views\UserHomePanel\UserHomePanelForm.cshtml" />
     <Content Include="Views\Navigation\LeftBar.cshtml" />
     <Content Include="Views\UserHomePanel\AddEventForm.cshtml" />
+    <Content Include="Views\UserHomePanel\YourEventsForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
