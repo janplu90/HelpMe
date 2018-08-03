@@ -1,5 +1,6 @@
-﻿@using HelpMe.Domain.Entities
-@model IEnumerable<Event>
+﻿@using HelpMe.WebUI.HtmlHelpers;
+@using HelpMe.WebUI.Models
+@model EventListViewModel
 
 @{
 
@@ -20,14 +21,20 @@
         @Model.Country
         <h4>@Model.Age</h4>*@
 
-@foreach (var e in Model)
+@foreach (var e in Model.Events)
 {
-    <div>
-        <h3>@e.Description</h3>
+    <div class="well">
+        <strong>@e.Title</strong>
         @e.Date
-        <h4>@e.Title</h4>
+        <span class="lead">@e.Description</span>
+        
+        
     </div>
 }
+
+        <div class="btn-group pull-right">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("UserHomePanelForm", new { page = x, category = Model.CurrentCategory }))
+        </div>
     </div>
 </body>
 </html>

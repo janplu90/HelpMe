@@ -1,5 +1,6 @@
 ﻿using HelpMe.Domain.Abstract;
 using HelpMe.Domain.Entities;
+using HelpMe.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace HelpMe.WebUI.Controllers
     {
         private IUserRepository userRepository;
         private IEventRepository eventRepository;
+        public int PageSize = 2;
 
 
         public UserHomePanelController(IUserRepository userRepository, IEventRepository eventRepository)
@@ -20,9 +22,25 @@ namespace HelpMe.WebUI.Controllers
             this.eventRepository = eventRepository;
         }
 
-        public ViewResult UserHomePanelForm()
+        public ViewResult UserHomePanelForm(string category, int page = 1)
         {
-            return View(eventRepository.Events);
+            EventListViewModel model = new EventListViewModel {
+                Events = eventRepository.Events
+                .Where(p => category == null || p.Category == category)
+                 .OrderBy(p => p.EventID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = category == null ?
+                        eventRepository.Events.Count() :
+                        eventRepository.Events.Where(e => e.Category == category).Count()
+                },
+                CurrentCategory = category
+                };
+            return View(model);
         }
 
         public ViewResult AddEventForm()
@@ -42,7 +60,7 @@ namespace HelpMe.WebUI.Controllers
                 var user = userRepository.getUser(userLogin);
                 e.CreatorID = user.UserID;
                 eventRepository.AddEvent(e);
-                return View("UserHomePanelForm", eventRepository.Events);
+                return RedirectToActionPermanent("UserHomePanelForm", "UserHomePanel");
             }
             else
                 return View();

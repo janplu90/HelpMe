@@ -17,9 +17,11 @@ namespace HelpMe.WebUI.Controllers
             this.eventRepository = eventRepository;
             this.userRepository = userRepository;
         }
-       public PartialViewResult LeftBar()
+       public PartialViewResult LeftBar(string category = null)
         {
-            return PartialView();
+            ViewBag.SelectedCategory = category;
+            List<string> categories = new List<string> { "Sightseeing", "Transport", "Food", "Lodge" };
+            return PartialView(categories);
         }
 
     }

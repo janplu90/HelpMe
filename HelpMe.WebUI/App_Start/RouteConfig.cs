@@ -14,6 +14,12 @@ namespace HelpMe.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: null,
+               url: "Site{page}",
+               defaults: new { controller = "UserHomePanel", action = "UserHomePanelForm", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Login", action = "LoginForm", id = UrlParameter.Optional }
