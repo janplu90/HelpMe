@@ -22,7 +22,6 @@ namespace HelpMe.WebUI.Controllers
 
         public ViewResult UserHomePanelForm()
         {
-            //string test = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
             return View(eventRepository.Events);
         }
 
@@ -39,7 +38,11 @@ namespace HelpMe.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                return View("UserHomePanelForm");
+                var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
+                var user = userRepository.getUser(userLogin);
+                e.CreatorID = user.UserID;
+                eventRepository.AddEvent(e);
+                return View("UserHomePanelForm", eventRepository.Events);
             }
             else
                 return View();
