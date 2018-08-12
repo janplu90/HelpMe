@@ -2,15 +2,14 @@
 @model HelpMe.WebUI.Models.EventListViewModel
 
 @{
- 
-}
 
+}
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>YourEventsForm</title>
+    <title>AcceptedEventsForm</title>
 </head>
 <body>
     <div>
@@ -21,7 +20,7 @@
                     <strong>@e.Title</strong>
                     <span class="pull-right">@e.Date</span>
                 </h3>
-                <div class="btn btn-default pull-right">
+                <div class="btn pull-right">
                     @Html.ActionLink("Write review", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
                 </div>
                 <span class="lead"> @e.Description</span>
@@ -29,9 +28,8 @@
             </div>
         }
 
-
         <div class="btn-group pull-right">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("YourEventsForm", new { page = x}))
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("AcceptedEventsForm", new { page = x }))
         </div>
     </div>
 

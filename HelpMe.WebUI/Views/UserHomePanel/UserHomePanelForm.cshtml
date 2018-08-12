@@ -24,12 +24,16 @@
 @foreach (var e in Model.Events)
 {
     <div class="well">
-        <strong>@e.Title</strong>
-        @e.Date
-        <span class="lead">@e.Description</span>
-        
-        
-    </div>
+        <h3>
+            <strong>@e.Title</strong>
+            <span class="pull-right">@e.Date</span>
+        </h3>
+            <div class="btn btn-default pull-right">
+                @Html.ActionLink("EventAcctepted", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
+            </div>
+        <span class="lead"> @e.Description</span>
+
+        </div>
 }
 
         <div class="btn-group pull-right">

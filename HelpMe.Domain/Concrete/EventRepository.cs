@@ -23,5 +23,19 @@ namespace HelpMe.Domain.Concrete
             context.Events.Add(e);
             context.SaveChanges();
         }
+
+        public Event getEvent(int eventID)
+        {
+            var e = context.Events.SingleOrDefault( u => u.EventID == eventID);
+            return e;
+        }
+
+        public void acceptEvent(int eventID, int userID)
+        {
+            var e = context.Events.SingleOrDefault(u => u.EventID == eventID);
+            e.IsAcctepted = true;
+            e.HelperID = userID;
+            context.SaveChanges();
+        }
     }
 }

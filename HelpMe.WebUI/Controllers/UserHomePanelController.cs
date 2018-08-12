@@ -31,13 +31,12 @@ namespace HelpMe.WebUI.Controllers
             List<Event> events = new List<Event>();
             foreach (Event e in eventRepository.Events)
             {
-                if(e.CreatorID != user.UserID && (e.HelperID != user.UserID || e.HelperID == null))
+                if(e.CreatorID != user.UserID && e.HelperID != user.UserID)
                 {
                     events.Add(e);
                 }
             }
                 
-
             EventListViewModel model = new EventListViewModel {
                 Events = events
                 .Where(p => category == null || p.Category == category)
@@ -84,6 +83,8 @@ namespace HelpMe.WebUI.Controllers
         {
             var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
             var user = userRepository.getUser(userLogin);
+
+
          
             EventListViewModel model = new EventListViewModel
             {
@@ -97,6 +98,37 @@ namespace HelpMe.WebUI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = eventRepository.Events.Where(e => e.CreatorID == user.UserID).Count()
+                }
+            };
+            return View(model);
+        }
+
+        public ViewResult AcceptedEventsForm(int page = 1)
+        {
+            var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
+            var user = userRepository.getUser(userLogin);
+
+            List<Event> events = new List<Event>();
+            foreach (Event e in eventRepository.Events)
+            {
+                if (e.HelperID == user.UserID)
+                {
+                    events.Add(e);
+                }
+            }
+
+            EventListViewModel model = new EventListViewModel
+            {
+                Events = eventRepository.Events
+                .Where(u => u.HelperID == user.UserID)
+                 .OrderBy(u => u.EventID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = eventRepository.Events.Where(e => e.HelperID == user.UserID).Count()
                 }
             };
             return View(model);

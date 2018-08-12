@@ -11,5 +11,7 @@ namespace HelpMe.Domain.Abstract
     {
         IEnumerable<Event> Events { get; }
         void AddEvent(Event e);
+        Event getEvent(int eventID);
+        void acceptEvent(int eventID, int userID);
     }
 }
