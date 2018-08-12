@@ -11,5 +11,6 @@ namespace HelpMe.WebUI.Models
         public IEnumerable<Event> Events { get; set; }
         public PagingInfo PagingInfo { get; set; }
         public string CurrentCategory { get; set; }
+        public string CurrentCity { get; set; }
     }
 }

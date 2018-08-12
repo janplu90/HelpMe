@@ -22,6 +22,8 @@ namespace HelpMe.Domain.Entities
         public string Category { get; set; }
         [Required(ErrorMessage = "Please fill up date field")]
         public DateTime Date { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
         public Nullable<bool> IsAcctepted { get; set; }
         public Nullable<bool> IsDone { get; set; }
     }

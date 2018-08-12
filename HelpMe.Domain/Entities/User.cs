@@ -24,6 +24,8 @@ namespace HelpMe.Domain.Entities
         public string City { get; set; }
         [Required(ErrorMessage = "Please fill up your age")]
         public int Age { get; set; }
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
         public List<Event> events;
         public List<Review> reviews;
     }

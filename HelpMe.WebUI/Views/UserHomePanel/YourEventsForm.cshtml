@@ -16,7 +16,16 @@
     <div>
         @foreach (var e in Model.Events)
         {
-            <div class="well">
+         
+            <div class="well">    
+                @if (e.ImageData != null)
+                {
+                <div class="pull-left" style="margin-right: 10px">
+                    <img class="img-thumbnail" width="75" height="75"
+                         src="@Url.Action("GetImage", "UserHomePanel",
+                new { @e.EventID })" />
+                </div>
+                }
                 <h3>
                     <strong>@e.Title</strong>
                     <span class="pull-right">@e.Date</span>

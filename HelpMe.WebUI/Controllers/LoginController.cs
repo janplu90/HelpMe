@@ -53,10 +53,16 @@ namespace HelpMe.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegisterForm(User user)
+        public ActionResult RegisterForm(User user, HttpPostedFileBase image = null)
         {
             if(ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    user.ImageMimeType = image.ContentType;
+                    user.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(user.ImageData, 0, image.ContentLength);
+                }
                 repository.AddUser(user);
                 return RedirectToAction("HomePage", "Home", user.Login);
             }

@@ -22,9 +22,8 @@ namespace HelpMe.WebUI.Controllers
             this.eventRepository = eventRepository;
         }
 
-        public ViewResult UserHomePanelForm(string category, int page = 1)
+        public ViewResult UserHomePanelForm(string category, int page = 1, string city = null)
         {
-
             var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
             var user = userRepository.getUser(userLogin);
 
@@ -36,23 +35,50 @@ namespace HelpMe.WebUI.Controllers
                     events.Add(e);
                 }
             }
-                
-            EventListViewModel model = new EventListViewModel {
-                Events = events
-                .Where(p => category == null || p.Category == category)
-                 .OrderBy(p => p.EventID)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize),
-                PagingInfo = new PagingInfo
+
+            EventListViewModel model;
+
+            if (city == null)
+            {
+                model = new EventListViewModel
                 {
-                    CurrentPage = page,
-                    ItemsPerPage = PageSize,
-                    TotalItems = category == null ?
-                        events.Count() :
-                        eventRepository.Events.Where(e => e.Category == category).Count()
-                },
-                CurrentCategory = category
+                    Events = events
+                    .Where(p => category == null || p.Category == category)
+                     .OrderBy(p => p.EventID)
+                        .Skip((page - 1) * PageSize)
+                        .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = category == null ?
+                            events.Count() :
+                            eventRepository.Events.Where(e => e.Category == category).Count()
+                    },
+                    CurrentCategory = category
                 };
+            }
+            else
+            {
+                model = new EventListViewModel
+                {
+                    Events = events
+                   .Where(p => (category == null || p.Category == category) && p.Place == city)
+                    .OrderBy(p => p.EventID)
+                       .Skip((page - 1) * PageSize)
+                       .Take(PageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        CurrentPage = page,
+                        ItemsPerPage = PageSize,
+                        TotalItems = category == null ?
+                           eventRepository.Events.Where(e => e.Place == city).Count() :
+                           eventRepository.Events.Where(e => e.Category == category && e.Place == city).Count()
+                    },
+                    CurrentCategory = category,
+                    CurrentCity = city
+                };
+            }
             return View(model);
         }
 
@@ -72,6 +98,8 @@ namespace HelpMe.WebUI.Controllers
                 var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
                 var user = userRepository.getUser(userLogin);
                 e.CreatorID = user.UserID;
+                e.ImageData = user.ImageData;
+                e.ImageMimeType = user.ImageMimeType;
                 eventRepository.AddEvent(e);
                 return RedirectToActionPermanent("UserHomePanelForm", "UserHomePanel");
             }
@@ -134,6 +162,24 @@ namespace HelpMe.WebUI.Controllers
             return View(model);
         }
 
+        public FileContentResult GetImage(int eventID)
+        {
+            Event e = eventRepository.getEvent(eventID);
+            if (e != null)
+            {
+                return File(e.ImageData, e.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public ActionResult SearchCity(string searchCityText)
+        {
+            string test = searchCityText;
+            return RedirectToAction("UserHomePanelForm", "UserHomePanel", new { city = searchCityText } );
+        }
 
 
     }

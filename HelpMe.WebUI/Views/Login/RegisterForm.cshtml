@@ -17,7 +17,7 @@
     <div class="panel panel-success">
         <div class="panel-heading text-center"><h4>Registration</h4></div>
         <div class="panel-body">
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("RegisterForm", "Login", FormMethod.Post, new { enctype = "multipart/form-data"}))
             {
                 @Html.ValidationSummary()
                 <div class="form-group">
@@ -48,11 +48,26 @@
                     <label>Age:</label>
                     @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
                 </div>
-                <div class="text-center">
-                    <input class="btn btn-success" type="submit" value="Submit" />
+                <div class="form-group">
+                    <div style="position:relative;">
+                        <label>Photo</label>
+                        <a class='btn' href='javascript:;'>
+                            Choose file...
+                            <input type="file" name="Image" size="40"
+                                   style="position:absolute;z-index:2;top:0;
+                            left:0;filter: alpha(opacity=0); opacity:0;
+                            background-color:transparent;color:transparent;"
+                                   onchange='$("#upload-file-info").html($(this).val());'>
+                        </a>
+                        <span class='label label-info' id="upload-file-info"></span>
+                    </div>
+                    </div>
+
+                    <div class="text-center">
+                        <input class="btn btn-success" type="submit" value="Submit" />
+                    </div>
+                    }
                 </div>
-            }
-        </div>
     </div>
 </body>
 </html>
