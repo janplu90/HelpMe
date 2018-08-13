@@ -162,12 +162,25 @@ namespace HelpMe.WebUI.Controllers
             return View(model);
         }
 
-        public FileContentResult GetImage(int eventID)
+        public FileContentResult GetImageForEvent(int eventID)
         {
             Event e = eventRepository.getEvent(eventID);
             if (e != null)
             {
                 return File(e.ImageData, e.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public FileContentResult GetImageForProfile(int userID)
+        {
+            User u = userRepository.getUser(userID);
+            if (u != null)
+            {
+                return File(u.ImageData, u.ImageMimeType);
             }
             else
             {

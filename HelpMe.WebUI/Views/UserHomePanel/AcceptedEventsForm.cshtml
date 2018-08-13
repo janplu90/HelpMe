@@ -16,14 +16,41 @@
         @foreach (var e in Model.Events)
         {
             <div class="well">
-                <h3>
-                    <strong>@e.Title</strong>
-                    <span class="pull-right">@e.Date</span>
-                </h3>
-                <div class="btn pull-right">
-                    @Html.ActionLink("Write review", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        @if (e.ImageData != null)
+                {
+                            <div class="pull-left" style="margin-right: 10px">
+                                <img class="img-thumbnail" width="75" height="75"
+                                     src="@Url.Action("GetImageForEvent", "UserHomePanel",
+                new { @e.EventID })" />
+                            </div>
+                        }
+                    </div>
+                    <div class="col-lg-7">
+                        <h3><strong>@e.Title</strong></h3>
+                        <div>
+                            <span class="pull-left"> @e.Description</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <span class="pull-right">@e.Date</span>
+                        <span class="pull-right">@e.Place</span>
+                    </div>
+
+
                 </div>
-                <span class="lead"> @e.Description</span>
+                <div class="row">
+                    <div class="btn btn-success pull-right col-lg-6">
+                        @Html.ActionLink("Write review", "WriteReviewForm", "Review", new { reviewerID = e.HelperID, revieweeID = e.CreatorID}, null);
+                    </div>
+                    <div class="btn btn-info pull-right col-lg-6">
+                        @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
+                    </div>
+
+
+                </div>
 
             </div>
         }

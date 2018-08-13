@@ -51,15 +51,7 @@ namespace HelpMe.Domain.Concrete
         {
             var test = context.Users.SingleOrDefault(t => t.Name == "Casey");
 
-            //if (test != null)
-            //{
-            //    var rev = context.Reviews.SingleOrDefault(t => t.ReviewID == 1);
-            //    test.reviews = new List<Review>();
-            //    test.reviews.Add(rev);
-            //    context.SaveChanges();
-            //}
-            Console.WriteLine(test.reviews.First().ReviewID);
-            Console.ReadKey();
+         
          
         }
 
@@ -85,6 +77,13 @@ namespace HelpMe.Domain.Concrete
         public User getUser(string login)
         {
             var user = context.Users.SingleOrDefault(u => u.Login == login);
+            return user;
+
+        }
+
+        public User getUser(int userID)
+        {
+            var user = context.Users.SingleOrDefault(u => u.UserID == userID);
             return user;
 
         }

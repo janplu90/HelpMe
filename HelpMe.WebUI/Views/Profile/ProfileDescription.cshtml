@@ -1,0 +1,73 @@
+﻿@model HelpMe.WebUI.Models.ProfileDescriptionViewModel
+
+@{
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProfileDescription</title>
+</head>
+<body>
+    <div class="well">
+        <div class="row">
+            <div class="col-lg-4">
+                @if (Model.User.ImageData != null)
+                {
+                    <div class="pull-left" style="margin-right: 10px">
+                        <img class="img-thumbnail" width="75" height="75"
+                             src="@Url.Action("GetImageForProfile", "UserHomePanel",
+  new { Model.User.UserID })" />
+                    </div>
+                }
+            </div>
+            <div class="col-lg-5">
+                <h3><strong>@Model.User.Name, @Model.User.Surname</strong></h3>
+            </div>
+            <div class="col-lg-3">
+                <span class="pull-right">@Model.User.City, @Model.User.Country</span>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <label>About me</label>
+                <span class="pull-left">@Model.User.AboutMe</span>
+            </div>
+        </div>
+      
+
+        <label>Reviews : </label>
+        @{ 
+            if (Model.Reviews.Count() > 0)
+            {
+                foreach (var r in Model.Reviews)
+                {
+
+        <div class="row">
+            <div class="col-lg-10">
+                <span class="pull-left"> @r.Description</span>
+            </div>
+            <div class="col-lg-2 col-lg-pull-2">
+                <span class="pull-right"> @r.Recommendation, @r.WrittenByName</span>
+            </div>
+
+
+        </div>
+
+                    }
+                }
+                else
+                {
+                   <h3><strong>No reviews</strong></h3>
+                }
+            }
+
+    </div>
+</body>
+</html>

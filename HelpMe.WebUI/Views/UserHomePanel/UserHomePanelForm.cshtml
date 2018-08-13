@@ -27,7 +27,7 @@
                 {
                     <div class="pull-left" style="margin-right: 10px">
                         <img class="img-thumbnail" width="75" height="75"
-                             src="@Url.Action("GetImage", "UserHomePanel",
+                             src="@Url.Action("GetImageForEvent", "UserHomePanel",
                 new { @e.EventID })" />
                     </div>
                 }
@@ -50,7 +50,7 @@
                 @Html.ActionLink("Help", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
             </div>
             <div class="btn btn-info pull-right col-lg-6">
-                @Html.ActionLink("View profile", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
+                @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
             </div>
 
 

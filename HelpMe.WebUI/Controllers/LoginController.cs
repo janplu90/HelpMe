@@ -64,7 +64,7 @@ namespace HelpMe.WebUI.Controllers
                     image.InputStream.Read(user.ImageData, 0, image.ContentLength);
                 }
                 repository.AddUser(user);
-                return RedirectToAction("HomePage", "Home", user.Login);
+                return RedirectToAction("LoginForm", "Login");
             }
             else
             return View();

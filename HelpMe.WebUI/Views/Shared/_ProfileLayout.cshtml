@@ -14,13 +14,24 @@
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">HelpMe</a>
+                <a class="navbar-brand" href="@Url.Action("UserHomePanelForm", "UserHomePanel")">HelpMe</a>
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="@Url.Action("UserHomePanelForm", "UserHomePanel")">Home</a></li>
-                <li><a href="@Url.Action("AddEventForm", "UserHomePanel")">Add event</a></li>
-                <li><a href="@Url.Action("YourEventsForm", "UserHomePanel")">Created events</a></li>
-                <li><a href="@Url.Action("AcceptedEventsForm", "UserHomePanel")">Acctepted events</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Events
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("AddEventForm", "UserHomePanel")">Add event</a></li>
+                        <li><a href="@Url.Action("YourEventsForm", "UserHomePanel")">Created events</a></li>
+                        <li><a href="@Url.Action("AcceptedEventsForm", "UserHomePanel")">Acctepted events</a></li>
+                    </ul>
+                </li>
+                @*<li><a href="@Url.Action("AddEventForm", "UserHomePanel")">Add event</a></li>
+        <li><a href="@Url.Action("YourEventsForm", "UserHomePanel")">Created events</a></li>
+        <li><a href="@Url.Action("AcceptedEventsForm", "UserHomePanel")">Acctepted events</a></li>*@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span>User data</a></li>
