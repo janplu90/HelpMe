@@ -12,7 +12,27 @@
     <title>WriteReviewForm</title>
 </head>
 <body>
-    <div> 
+    <div class="well-lg"> 
+       @using (@Html.BeginForm())
+       {
+           Model.ReviewerID = ViewBag.ReviewerID;
+           @Html.HiddenFor(m => m.ReviewerID)
+           Model.RevieweeID = ViewBag.RevieweeID;
+           @Html.HiddenFor(m => m.RevieweeID)
+           Model.ReviewerName = ViewBag.ReviewerName;
+           @Html.HiddenFor(m => m.ReviewerName)
+        <div class="form-group">
+            <label for="comment">Review:</label>
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = 5 })
+            <div class="form-group">
+                <label>Recommendation:</label>
+                @Html.TextBoxFor(m => m.Recommendation, new { @class = "form-control" })
+            </div>
+        </div>
+     
+            <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+        
+        }
     </div>
 </body>
 </html>

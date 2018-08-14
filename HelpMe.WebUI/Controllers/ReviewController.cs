@@ -13,9 +13,7 @@ namespace HelpMe.WebUI.Controllers
     {
         private IUserRepository userRepository;
         private IReviewRepository reviewRepository;
-        private int reviewerID;
-        private int revieweeID;
-
+     
         public ReviewController(IUserRepository userRepository, IReviewRepository reviewRepository)
         {
             this.userRepository = userRepository;
@@ -24,8 +22,10 @@ namespace HelpMe.WebUI.Controllers
 
         public ActionResult WriteReviewForm(int reviewerID, int revieweeID)
         {
-            this.reviewerID = reviewerID;
-            this.revieweeID = revieweeID;
+            User u = userRepository.getUser(reviewerID);
+            ViewBag.ReviewerID = reviewerID;
+            ViewBag.RevieweeID = revieweeID;
+            ViewBag.ReviewerName = u.Name;
 
             return View(new ReviewFormViewModel());
         }
@@ -33,8 +33,9 @@ namespace HelpMe.WebUI.Controllers
         [HttpPost]
         public ActionResult WriteReviewForm(ReviewFormViewModel model)
         {
-           User u = userRepository.getUser(reviewerID);
-            reviewRepository.AddReview(new Domain.Entities.Review { WrittenByID = reviewerID, WrittenForID = revieweeID, WrittenByName = u.Name, Description = model.Description, Recommendation = model.Recommendation });
+            string test = model.Recommendation;
+            string test2 = model.Description;
+            reviewRepository.AddReview(new Domain.Entities.Review { WrittenByID = model.ReviewerID, WrittenForID = model.RevieweeID , WrittenByName = model.ReviewerName, Description = model.Description, Recommendation = model.Recommendation });
             return RedirectToActionPermanent("AcceptedEventsForm", "UserHomePanel");
         }
     }

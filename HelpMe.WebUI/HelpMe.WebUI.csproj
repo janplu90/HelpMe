@@ -208,6 +208,7 @@
     <Content Include="Views\UserHomePanel\AcceptedEventsForm.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
     <Content Include="Views\Profile\ProfileDescription.cshtml" />
+    <Content Include="Views\Review\WriteReviewForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -218,7 +219,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Event\" />
-    <Folder Include="Views\Review\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HelpMe.Domain\HelpMe.Domain.csproj">

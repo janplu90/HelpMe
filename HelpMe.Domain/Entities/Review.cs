@@ -13,6 +13,6 @@ namespace HelpMe.Domain.Entities
         public int WrittenForID { get; set; }
         public string WrittenByName { get; set; }
         public string Description { get; set; }
-        public bool Recommendation { get; set; }
+        public string Recommendation { get; set; }
     }
 }
