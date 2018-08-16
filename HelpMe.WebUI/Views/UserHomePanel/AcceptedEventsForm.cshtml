@@ -41,16 +41,28 @@
 
 
                 </div>
+                @if ( DateTime.Compare(e.Date, DateTime.Now) >= 0 )
+                {
                 <div class="row">
-                    <div class="btn btn-success pull-right col-lg-6">
-                        @Html.ActionLink("Write review", "WriteReviewForm", "Review", new { reviewerID = e.HelperID, revieweeID = e.CreatorID}, null);
+                    <div class="btn btn-success disabled pull-right col-lg-6">
+                        Write review
                     </div>
-                    <div class="btn btn-info pull-right col-lg-6">
+                    <div class="btn btn-info pull-left col-lg-6">
                         @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
                     </div>
-
-
                 </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="btn btn-success pull-right col-lg-6">
+                            @Html.ActionLink("Write review", "WriteReviewHelper", "Review", new { reviewerID = e.HelperID, revieweeID = e.CreatorID, eventID = e.EventID }, null);
+                        </div>
+                        <div class="btn btn-info pull-left col-lg-6">
+                            @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
+                        </div>
+                    </div>
+                }
 
             </div>
         }
@@ -60,6 +72,6 @@
         </div>
     </div>
 
-    </div>
+   
 </body>
 </html>

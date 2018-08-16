@@ -16,24 +16,56 @@
     <div>
         @foreach (var e in Model.Events)
         {
-         
-            <div class="well">    
-                @if (e.ImageData != null)
+
+            <div class="well">
+
+                <div class="row">
+                    <div class="col-lg-2">
+                        @if (e.ImageData != null)
                 {
-                <div class="pull-left" style="margin-right: 10px">
-                    <img class="img-thumbnail" width="75" height="75"
-                         src="@Url.Action("GetImageForEvent", "UserHomePanel",
+                            <div class="pull-left" style="margin-right: 10px">
+                                <img class="img-thumbnail" width="75" height="75"
+                                     src="@Url.Action("GetImageForEvent", "UserHomePanel",
                 new { @e.EventID })" />
+                            </div>
+                        }
+                    </div>
+                    <div class="col-lg-7">
+                        <h3><strong>@e.Title</strong></h3>
+                        <div>
+                            <span class="pull-left"> @e.Description</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <span class="pull-right">@e.Date</span>
+                        <span class="pull-right">@e.Place</span>
+                    </div>
+
+
                 </div>
+                @if (DateTime.Compare(e.Date, DateTime.Now) >= 0)
+                {
+                    <div class="row">
+                        <div class="btn btn-success disabled pull-right col-lg-6">
+                            Write review
+                        </div>
+                        <div class="btn btn-info pull-left col-lg-6">
+                            @Html.ActionLink("Delete", "DeleteCreatedEvent", "Event", new { eventID = e.EventID }, null);
+                        </div>
+                    </div>
                 }
-                <h3>
-                    <strong>@e.Title</strong>
-                    <span class="pull-right">@e.Date</span>
-                </h3>
-                <div class="btn btn-default pull-right">
-                    @Html.ActionLink("Write review", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
-                </div>
-                <span class="lead"> @e.Description</span>
+                else
+                {
+                    <div class="row">
+                        <div class="btn btn-success pull-right col-lg-6">
+                            @e.ReviewedByCreator = true;
+                            @Html.ActionLink("Write review", "WriteReviewCreator", "Review", new { reviewerID = e.CreatorID, revieweeID = e.HelperID, eventID = e.EventID }, null);
+                        </div>
+                        <div class="btn btn-info pull-left col-lg-6">
+                            @Html.ActionLink("Delete", "DeleteCreatedEvent", "Event", new { eventID = e.EventID }, null);
+                        </div>
+                    </div>
+                }
 
             </div>
         }

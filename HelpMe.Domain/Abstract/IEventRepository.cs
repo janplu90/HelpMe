@@ -13,5 +13,8 @@ namespace HelpMe.Domain.Abstract
         void AddEvent(Event e);
         Event getEvent(int eventID);
         void acceptEvent(int eventID, int userID);
+        void deleteEvent(int eventID);
+        void updateEventHelperReview(int eventID);
+        void updateEventCreatorReview(int eventID);
     }
 }

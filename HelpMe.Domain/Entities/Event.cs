@@ -26,5 +26,7 @@ namespace HelpMe.Domain.Entities
         public string ImageMimeType { get; set; }
         public Nullable<bool> IsAcctepted { get; set; }
         public Nullable<bool> IsDone { get; set; }
+        public Nullable<bool> ReviewedByCreator { get; set; }
+        public Nullable<bool> ReviewedByHelper { get; set; }
     }
 }

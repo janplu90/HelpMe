@@ -32,5 +32,16 @@ namespace HelpMe.WebUI.Controllers
 
             
         }
+
+        public ActionResult DeleteCreatedEvent(int eventID)
+        {
+            eventRepository.deleteEvent(eventID);
+
+            return RedirectToAction("YourEventsForm", "UserHomePanel");
+
+
+        }
+   
+        
     }
 }

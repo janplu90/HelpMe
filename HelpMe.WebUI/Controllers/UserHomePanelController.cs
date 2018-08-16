@@ -30,7 +30,7 @@ namespace HelpMe.WebUI.Controllers
             List<Event> events = new List<Event>();
             foreach (Event e in eventRepository.Events)
             {
-                if(e.CreatorID != user.UserID && e.HelperID != user.UserID)
+                if(e.CreatorID != user.UserID && e.HelperID != user.UserID && (DateTime.Compare(e.Date, DateTime.Now) > 0))
                 {
                     events.Add(e);
                 }
@@ -112,12 +112,18 @@ namespace HelpMe.WebUI.Controllers
             var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
             var user = userRepository.getUser(userLogin);
 
+            List<Event> events = new List<Event>();
+            foreach (Event e in eventRepository.Events)
+            {
+                if (e.CreatorID == user.UserID && e.ReviewedByCreator.HasValue == false)
+                {
+                    events.Add(e);
+                }
+            }
 
-         
             EventListViewModel model = new EventListViewModel
             {
-                Events = eventRepository.Events
-                .Where(u => u.CreatorID == user.UserID)
+                Events = events
                  .OrderBy(u => u.EventID)
                     .Skip((page - 1) * PageSize) 
                     .Take(PageSize),
@@ -125,7 +131,7 @@ namespace HelpMe.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = eventRepository.Events.Where(e => e.CreatorID == user.UserID).Count()
+                    TotalItems = events.Count()
                 }
             };
             return View(model);
@@ -139,7 +145,7 @@ namespace HelpMe.WebUI.Controllers
             List<Event> events = new List<Event>();
             foreach (Event e in eventRepository.Events)
             {
-                if (e.HelperID == user.UserID)
+                if (e.HelperID == user.UserID && e.ReviewedByHelper.HasValue == false)
                 {
                     events.Add(e);
                 }
@@ -147,8 +153,7 @@ namespace HelpMe.WebUI.Controllers
 
             EventListViewModel model = new EventListViewModel
             {
-                Events = eventRepository.Events
-                .Where(u => u.HelperID == user.UserID)
+                Events = events
                  .OrderBy(u => u.EventID)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),
@@ -156,11 +161,12 @@ namespace HelpMe.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = eventRepository.Events.Where(e => e.HelperID == user.UserID).Count()
+                    TotalItems = events.Count()
                 }
             };
             return View(model);
         }
+     
 
         public FileContentResult GetImageForEvent(int eventID)
         {

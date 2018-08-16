@@ -21,6 +21,8 @@
            @Html.HiddenFor(m => m.RevieweeID)
            Model.ReviewerName = ViewBag.ReviewerName;
            @Html.HiddenFor(m => m.ReviewerName)
+           Model.EventID = ViewBag.EventID;
+           @Html.HiddenFor(m => m.EventID)
         <div class="form-group">
             <label for="comment">Review:</label>
             @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = 5 })

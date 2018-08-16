@@ -37,5 +37,27 @@ namespace HelpMe.Domain.Concrete
             e.HelperID = userID;
             context.SaveChanges();
         }
+
+        public void deleteEvent(int eventID)
+        {
+            Event eventToBeDeleted = context.Events.FirstOrDefault(e => e.EventID == eventID);
+            context.Events.Remove(eventToBeDeleted);
+            context.SaveChanges();
+        }
+
+        public void updateEventHelperReview(int eventID)
+        {
+            Event toUpdate = context.Events.SingleOrDefault(e => e.EventID == eventID);
+            toUpdate.ReviewedByHelper = true;
+            context.SaveChanges();
+        }
+
+        public void updateEventCreatorReview(int eventID)
+        {
+            Event toUpdate = context.Events.SingleOrDefault(e => e.EventID == eventID);
+            toUpdate.ReviewedByCreator = true;
+            context.SaveChanges();
+        }
+
     }
 }
