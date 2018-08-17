@@ -1,0 +1,64 @@
+﻿@model HelpMe.Domain.Entities.User
+
+@{
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditProfile</title>
+</head>
+<body>
+    <div class="panel" >
+        <div class="panel-heading col-lg-12">
+            @if (Model.ImageData != null)
+            {
+                <div class="pull-left" style="margin-right: 10px">
+                    <img class="img-thumbnail" width="125" height="100"
+                         src="@Url.Action("GetImageForProfile", "UserHomePanel",
+  new { Model.UserID })" />
+                </div>
+            }
+        </div>
+
+       
+
+        @using (Html.BeginForm("EditProfile", "Profile"))
+        {
+            <div class="panel-body">
+                @foreach (var property in ViewData.ModelMetadata.Properties)
+                {
+                    if (property.PropertyName != "UserID" && property.PropertyName != "ImageData" && property.PropertyName != "ImageMimeType")
+                    {
+                        <div class="form-group">
+                            <label>@(property.DisplayName ?? property.PropertyName)</label>
+                            @if (property.PropertyName == "AboutMe")
+                            {
+                                @Html.TextArea(property.PropertyName, null,
+                                new { @class = "form-control", rows = 5 })
+                            }
+                            else
+                            {
+                                @Html.TextBox(property.PropertyName, null,
+                                new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessage(property.PropertyName)
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="panel-footer">
+                <input type="submit" value="Save" class="btn btn-primary col-lg-6" />
+                @Html.ActionLink("Cancel and go back to your profile", "UserProfile", null, new
+       {
+           @class = "btn btn-default col-lg-6"
+       })
+            </div>
+        }
+    </div>
+</body>
+</html>

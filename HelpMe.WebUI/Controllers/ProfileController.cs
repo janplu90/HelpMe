@@ -35,5 +35,44 @@ namespace HelpMe.WebUI.Controllers
             ProfileDescriptionViewModel model = new ProfileDescriptionViewModel { User = user, Reviews = reviews};
             return View(model);
         }
+
+        public ActionResult UserProfile()
+        {
+            User user = userRepository.getUser(System.Web.HttpContext.Current.Session["UserLogin"].ToString());
+            List<Review> reviews = new List<Review>();
+            foreach (Review rev in reviewRepository.Reviews)
+            {
+                if (rev.WrittenForID == user.UserID)
+                {
+                    reviews.Add(rev);
+                }
+            }
+
+            ProfileDescriptionViewModel model = new ProfileDescriptionViewModel { User = user, Reviews = reviews };
+            return View(model);
+        }
+
+        public ActionResult EditProfile(int userID)
+        {
+            User user = userRepository.Users.SingleOrDefault(u => u.UserID == userID);
+           
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.UserID = userRepository.getUser(System.Web.HttpContext.Current.Session["UserLogin"].ToString()).UserID;
+                userRepository.UpdateUser(user);
+                TempData["message"] = string.Format("Your changes have been saved");
+                return RedirectToAction("UserProfile");
+            }
+
+            return View(user);
+        }
+
+
     }
 }

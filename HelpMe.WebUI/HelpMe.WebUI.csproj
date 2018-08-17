@@ -209,6 +209,8 @@
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
     <Content Include="Views\Profile\ProfileDescription.cshtml" />
     <Content Include="Views\Review\WriteReviewForm.cshtml" />
+    <Content Include="Views\Profile\UserProfile.cshtml" />
+    <Content Include="Views\Profile\EditProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

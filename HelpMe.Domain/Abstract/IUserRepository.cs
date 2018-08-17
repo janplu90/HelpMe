@@ -12,9 +12,9 @@ namespace HelpMe.Domain.Abstract
         IEnumerable<User> Users { get; }
         void AddUser(User user);
         User getUser(string login);
-        User getUser(int login);
+        User getUser(int userID);
         void DeleteUser();
-        void UpdateUser();
+        void UpdateUser(User user);
         bool CheckIfUserExists(string login);
         bool CheckPassword(string login, string password);
     }

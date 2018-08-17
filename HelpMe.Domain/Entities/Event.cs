@@ -20,6 +20,8 @@ namespace HelpMe.Domain.Entities
         public string Place { get; set; }
         [Required(ErrorMessage = "Please fill up category field")]
         public string Category { get; set; }
+        [Required(ErrorMessage = "Please fill up contact field")]
+        public string Contact { get; set; }
         [Required(ErrorMessage = "Please fill up date field")]
         public DateTime Date { get; set; }
         public byte[] ImageData { get; set; }

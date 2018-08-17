@@ -47,9 +47,9 @@
                 {
                     <div class="row">
                         <div class="btn btn-success disabled pull-right col-lg-6">
-                            Write review
+                            <label>Write review</label>
                         </div>
-                        <div class="btn btn-info pull-left col-lg-6">
+                        <div class="btn btn-danger pull-left col-lg-6">
                             @Html.ActionLink("Delete", "DeleteCreatedEvent", "Event", new { eventID = e.EventID }, null);
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             @e.ReviewedByCreator = true;
                             @Html.ActionLink("Write review", "WriteReviewCreator", "Review", new { reviewerID = e.CreatorID, revieweeID = e.HelperID, eventID = e.EventID }, null);
                         </div>
-                        <div class="btn btn-info pull-left col-lg-6">
+                        <div class="btn btn-danger pull-left col-lg-6">
                             @Html.ActionLink("Delete", "DeleteCreatedEvent", "Event", new { eventID = e.EventID }, null);
                         </div>
                     </div>

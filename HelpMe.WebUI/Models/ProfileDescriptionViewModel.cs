@@ -10,6 +10,6 @@ namespace HelpMe.WebUI.Models
     {
         public User User { get; set; }
         public IEnumerable<Review> Reviews { get; set; }
-        public string reviewerName { get; set; }
+        //public string reviewerName { get; set; }
     }
 }

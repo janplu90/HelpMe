@@ -47,12 +47,21 @@ namespace HelpMe.Domain.Concrete
            
         }
 
-        public void UpdateUser()
+        public void UpdateUser(User user)
         {
-            var test = context.Users.SingleOrDefault(t => t.Name == "Casey");
-
-         
-         
+            User toUpdate = context.Users.Find(user.UserID);
+            if (toUpdate != null)
+            {
+                toUpdate.Name = user.Name;
+                toUpdate.Surname = user.Surname;
+                toUpdate.Age = user.Age;
+                toUpdate.AboutMe = user.AboutMe;
+                toUpdate.City = user.City;
+                toUpdate.Country = user.Country;
+                toUpdate.Login = user.Login;
+                toUpdate.Password = user.Password;
+            }
+            context.SaveChanges();
         }
 
         public bool CheckIfUserExists(string login)
