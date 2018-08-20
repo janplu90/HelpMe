@@ -12,29 +12,55 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>LoginForm</title>
     <style>
         .container-fluid {
             padding: 20px;
             text-align: center;
+           
+        }
+
+        .panel {
+            background-color: whitesmoke;
+        }
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        img.avatar {
+            border-radius: 50%;
+        }
+
+        .btn {
+            padding: 10px 100px;
+        }
+
+        body {
+            background-color:darkgray;
         }
         </style>
 </head>
 <body>
+    
         <div class="container-fluid">
             <div class="panel">
                 <div class="panel-heading">
-                    <h3>Please Log in</h3>
+                    <div class="imgcontainer">
+                        <img src="~/Source/loginimage.png" alt="Avatar" class="avatar">
+                    </div>
                 </div>
                 @if (Model != null)
                 {
-                if (Model.ErrorMessage == true)
-                {
-                    <div class="alert alert-danger">
-                        Incorrect username or password
-                    </div>
-                    Model.ErrorMessage = false;
-                }
+                    if (Model.ErrorMessage == true)
+                    {
+                        <div class="alert alert-danger">
+                            Incorrect username or password
+                        </div>
+                        Model.ErrorMessage = false;
+                    }
                 }
                 <div class="panel-body">
                     @using (Html.BeginForm())
@@ -45,14 +71,20 @@
                         </div>
                         <div class="form-group">
                             <label>Password:</label>
-                            @Html.TextBoxFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password)
                         </div>
-                        <input type="submit" value="Log in" class="btn btn-primary" />
+                            <div class="form-group">
+                                <div class="btn-group-vertical">
+                                    <input type="submit" value="Log in" class="btn btn-primary" />
+                                    <div class="btn btn-success">
+                                        @Html.ActionLink("Register", "RegisterForm", null, new { @style = "color:#ffffff;" })
+                                    </div>
+                                    
+                                </div>
+                        </div>
                     }
 
-                        <div class="btn btn-success">
-                            @Html.ActionLink("Register", "RegisterForm");
-                        </div>
+                   
 
 
 
@@ -60,5 +92,6 @@
                 </div>
             </div>
         </div>
+        
 </body>
 </html>
