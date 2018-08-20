@@ -177,6 +177,8 @@
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\AddEventViewModel.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\EventListViewModel.cs" />
     <Compile Include="Models\LoginFormViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />

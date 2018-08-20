@@ -20,7 +20,7 @@ namespace HelpMe.WebUI.Controllers
        public PartialViewResult LeftBar(string category = null)
         {
             ViewBag.SelectedCategory = category;
-            List<string> categories = new List<string> { "Sightseeing", "Transport", "Food", "Lodge" };
+            List<string> categories = new List<string> { "Sightseeing", "Transport", "Food", "Lodge", "Other" };
             return PartialView(categories);
         }
 

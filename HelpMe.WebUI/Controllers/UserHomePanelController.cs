@@ -30,7 +30,7 @@ namespace HelpMe.WebUI.Controllers
             List<Event> events = new List<Event>();
             foreach (Event e in eventRepository.Events)
             {
-                if(e.CreatorID != user.UserID && e.HelperID != user.UserID && (DateTime.Compare(e.Date, DateTime.Now) > 0))
+                if(e.CreatorID != user.UserID && e.HelperID != user.UserID && (DateTime.Compare(e.Date, DateTime.Now) > 0) && !e.IsAcctepted.HasValue)
                 {
                     events.Add(e);
                 }
@@ -72,8 +72,8 @@ namespace HelpMe.WebUI.Controllers
                         CurrentPage = page,
                         ItemsPerPage = PageSize,
                         TotalItems = category == null ?
-                           eventRepository.Events.Where(e => e.Place == city).Count() :
-                           eventRepository.Events.Where(e => e.Category == category && e.Place == city).Count()
+                          events.Where(e => e.Place == city).Count() :
+                           events.Where(e => e.Category == category && e.Place == city).Count()
                     },
                     CurrentCategory = category,
                     CurrentCity = city
@@ -89,6 +89,16 @@ namespace HelpMe.WebUI.Controllers
             ViewBag.UserID = user.UserID;
             return View();
         }
+
+        //public ViewResult AddEventForm()
+        //{
+        //    var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
+        //    var user = userRepository.getUser(userLogin);
+        //    ViewBag.UserID = user.UserID;
+
+
+        //    return View(new AddEventViewModel() { Categories = new List<Category>() { Category.Accommodation, Category.Culture, Category.Food, Category.Sightseeing, Category.Transport, Category.Other}  });
+        //}
 
         [HttpPost]
         public ActionResult AddEventForm(Event e)
@@ -106,6 +116,23 @@ namespace HelpMe.WebUI.Controllers
             else
                 return View();
         }
+
+        //[HttpPost]
+        //public ActionResult AddEventForm(AddEventViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var userLogin = System.Web.HttpContext.Current.Session["UserLogin"].ToString();
+        //        var user = userRepository.getUser(userLogin);
+        //        model.Event.CreatorID = user.UserID;
+        //        model.Event.ImageData = user.ImageData;
+        //        model.Event.ImageMimeType = user.ImageMimeType;
+        //        eventRepository.AddEvent(model.Event);
+        //        return RedirectToActionPermanent("UserHomePanelForm", "UserHomePanel");
+        //    }
+        //    else
+        //        return View();
+        //}
 
         public ViewResult YourEventsForm(int page = 1)
         {
