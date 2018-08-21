@@ -26,7 +26,7 @@
                 @if (e.ImageData != null)
                 {
                     <div class="pull-left" style="margin-right: 10px">
-                        <img class="img-thumbnail" width="75" height="75"
+                        <img class="img-thumbnail" width="100" height="125"
                              src="@Url.Action("GetImageForEvent", "UserHomePanel",
                 new { @e.EventID })" />
                     </div>
@@ -39,18 +39,18 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <span class="pull-right">@e.Date</span>
-                <span class="pull-right">@e.Place</span>
+                <span class="pull-right" style="padding-top:15px">@e.Date</span>
+                <span class="pull-right" style="margin-left:25px">@e.Place</span>
             </div>
 
            
         </div>
-        <div class="row">
+        <div class="row" style="padding-top:15px">
             <div class="btn btn-success pull-right col-lg-6">
-                @Html.ActionLink("Help", "AcceptEvent", "Event", new { eventID = e.EventID }, null);
+                @Html.ActionLink("Help", "AcceptEvent", "Event", new { eventID = e.EventID }, new { @style = "color:#ffffff;" })
             </div>
             <div class="btn btn-info pull-right col-lg-6">
-                @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
+                @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, new { @style = "color:#ffffff;" })
             </div>
 
 

@@ -14,5 +14,7 @@ namespace HelpMe.WebUI.Models
         public int RevieweeID { get; set; }
         public string ReviewerName { get; set; }
         public int EventID { get; set; }
+        public User Reviewee { get; set; }
+        public bool IsCreator { get; set; }
     }
 }

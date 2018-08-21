@@ -22,7 +22,7 @@
                         @if (e.ImageData != null)
                 {
                             <div class="pull-left" style="margin-right: 10px">
-                                <img class="img-thumbnail" width="75" height="75"
+                                <img class="img-thumbnail" width="100" height="125"
                                      src="@Url.Action("GetImageForEvent", "UserHomePanel",
                 new { @e.EventID })" />
                             </div>
@@ -35,43 +35,44 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <span class="pull-right">@e.Date</span>
-                        <span class="pull-right">@e.Place</span>
+                        <span class="pull-right" style="padding-top:15px">@e.Date</span>
+                        <span class="pull-right" style="margin-left:25px">@e.Place</span>
                     </div>
 
 
                 </div>
-                @if ( DateTime.Compare(e.Date, DateTime.Now) >= 0 )
-                {
-                <div class="row">
-                    <div class="btn btn-success disabled pull-right col-lg-6">
-                        <label>@e.Contact</label>
-                    </div>
-                    <div class="btn btn-info pull-left col-lg-6">
-                        @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
-                    </div>
+                
+                    @if (DateTime.Compare(e.Date, DateTime.Now) >= 0)
+                    {
+                        <div class="row" style="padding-top:15px">
+                            <div class="btn btn-success disabled pull-right col-lg-6">
+                                @e.Contact
+                            </div>
+                            <div class="btn btn-info pull-left col-lg-6">
+                                @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, new { @style = "color:#ffffff;" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row" style="padding-top:15px">
+                            <div class="btn btn-success pull-right col-lg-6">
+                                @Html.ActionLink("Write review", "WriteReviewForm", "Review", new { reviewerID = e.HelperID, revieweeID = e.CreatorID, eventID = e.EventID },new { @style = "color:#ffffff;" })
+                            </div>
+                            <div class="btn btn-info pull-left col-lg-6">
+                                @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID },new { @style = "color:#ffffff;" })
+                            </div>
+                        </div>
+                    }
+
                 </div>
                 }
-                else
-                {
-                    <div class="row">
-                        <div class="btn btn-success pull-right col-lg-6">
-                            @Html.ActionLink("Write review", "WriteReviewHelper", "Review", new { reviewerID = e.HelperID, revieweeID = e.CreatorID, eventID = e.EventID }, null);
-                        </div>
-                        <div class="btn btn-info pull-left col-lg-6">
-                            @Html.ActionLink("View profile", "ProfileDescription", "Profile", new { userID = e.CreatorID }, null);
-                        </div>
-                    </div>
-                }
 
+                <div class="btn-group pull-right">
+                    @Html.PageLinks(Model.PagingInfo, x => Url.Action("AcceptedEventsForm", new { page = x }))
+                </div>
             </div>
-        }
 
-        <div class="btn-group pull-right">
-            @Html.PageLinks(Model.PagingInfo, x => Url.Action("AcceptedEventsForm", new { page = x }))
-        </div>
-    </div>
 
-   
 </body>
 </html>

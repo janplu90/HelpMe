@@ -36,19 +36,21 @@ namespace HelpMe.WebUI.Controllers
             return RedirectToAction("WriteReviewForm", "Review", new { reviewerID = reviewerID, revieweeID = revieweeID, eventID = eventID });
         }
 
-        public ActionResult WriteReviewForm(int reviewerID, int revieweeID, int eventID)
+        public ActionResult WriteReviewForm(int reviewerID, int revieweeID, int eventID, bool creator = false)
         {
             User u = userRepository.getUser(reviewerID);
-            ViewBag.ReviewerID = reviewerID;
-            ViewBag.RevieweeID = revieweeID;
+            User uReviewee = userRepository.getUser(revieweeID);
+            //ViewBag.ReviewerID = reviewerID;
+            //ViewBag.RevieweeID = revieweeID;
             ViewBag.ReviewerName = u.Name;
-            ViewBag.EventID = eventID;
+            ViewBag.Creator = creator;
+            //ViewBag.EventID = eventID;
 
             Event eventToPass = eventRepository.getEvent(eventID);
             bool test = eventToPass.ReviewedByHelper ?? false;
             bool test2 = eventToPass.ReviewedByCreator ?? false;
 
-            return View(new ReviewFormViewModel());
+            return View(new ReviewFormViewModel() {ReviewerID = reviewerID, RevieweeID = revieweeID, EventID = eventID, Reviewee = uReviewee });
         }
 
         [HttpPost]
@@ -56,6 +58,14 @@ namespace HelpMe.WebUI.Controllers
         {
             string test = model.Recommendation;
             string test2 = model.Description;
+            if(model.IsCreator)
+            {
+                eventRepository.updateEventCreatorReview(model.EventID);
+            }
+            else
+            {
+                eventRepository.updateEventHelperReview(model.EventID);
+            }
             Event e = eventRepository.getEvent(model.EventID);
             if ( (e.ReviewedByHelper.HasValue && e.ReviewedByHelper == true) && (e.ReviewedByCreator.HasValue && e.ReviewedByCreator == true))
             {
