@@ -20,6 +20,7 @@ namespace HelpMe.Domain.Entities
         [Required(ErrorMessage = "Please fill up your login")]
         public string Login { get; set; }
         [HiddenInput(DisplayValue = false)]
+        [DataType(DataType.Password)]
         [Required(ErrorMessage = "Please fill up your password")]
         public string Password { get; set; }
         [Required(ErrorMessage = "Please fill up your country")]

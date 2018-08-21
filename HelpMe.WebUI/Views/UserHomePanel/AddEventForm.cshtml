@@ -19,11 +19,24 @@
              });
           });
     </script>
+    <style>
+        .form-control {
+            background-color: whitesmoke;
+        }
+
+        .panel-body {
+            background-color: whitesmoke;
+        }
+
+        .panel-heading {
+            background-color: lightgray;
+        }
+    </style>
     <title>AddEventForm</title>
 </head>
 <body>
-    <div class="panel panel-success">
-        <div class="panel-heading text-center"><h4>Registration</h4></div>
+    <div class="panel">
+        <div class="panel-heading text-center"><h4>Add event</h4></div>
         <div class="panel-body">
             @using (Html.BeginForm())
             {
@@ -52,8 +65,17 @@
                     <label>Date:</label>
                     @Html.TextBoxFor(x => x.Date,  new { @class = "datefield" })
                 </div>
-                <div class="text-center">
-                    <input class="btn btn-success" type="submit" value="Submit" />
+               
+                <div class="row">
+
+                    <div class="btn btn-danger col-lg-6 ">
+                        @Html.ActionLink("Cancel", null, null, null, new { href = Request.UrlReferrer, @style = "color:#ffffff;" })
+                    </div>
+                    <div class="col-lg-6 ">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                    </div>
+
+
                 </div>
             }
         </div>

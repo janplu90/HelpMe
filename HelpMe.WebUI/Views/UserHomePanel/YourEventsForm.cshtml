@@ -46,7 +46,7 @@
                 @if (DateTime.Compare(e.Date, DateTime.Now) >= 0 || (DateTime.Compare(e.Date, DateTime.Now) < 0 && e.IsAcctepted != true) )
                 {
                     <div class="row" style="padding-top:15px">
-                        <div class="btn btn-success disabled pull-right col-lg-6">
+                        <div class="btn btn-primary disabled pull-right col-lg-6">
                             Write review
                         </div>
                         <div class="btn btn-danger pull-left col-lg-6">
@@ -57,7 +57,7 @@
                 else
                 {
                     <div class="row" style="padding-top:15px">
-                        <div class="btn btn-success pull-right col-lg-6">
+                        <div class="btn btn-primary pull-right col-lg-6">
                             @{e.ReviewedByCreator = true; }
                             @Html.ActionLink("Write review", "WriteReviewForm", "Review", new { reviewerID = e.CreatorID, revieweeID = e.HelperID, eventID = e.EventID, creator = true }, new { @style = "color:#ffffff;" })
                         </div>

@@ -13,60 +13,64 @@
 </head>
 <body>
     <div class="well">
-        <div class="row">
-            <div class="col-lg-4">
+        <div class="row" style="padding-left:15px">
+            <div class="col-lg-2">
                 @if (Model.User.ImageData != null)
                 {
                     <div class="pull-left" style="margin-right: 10px">
-                        <img class="img-thumbnail" width="75" height="75"
+                        <img class="img-thumbnail" width="125" height="150"
                              src="@Url.Action("GetImageForProfile", "UserHomePanel",
   new { Model.User.UserID })" />
                     </div>
                 }
             </div>
-            <div class="col-lg-5">
-                <h3><strong>@Model.User.Name, @Model.User.Surname</strong></h3>
+            <div class="col-lg-2 ">
+                <h3><strong>@Model.User.Name @Model.User.Surname</strong></h3>
+                <span class="">@Model.User.City, @Model.User.Country</span>
             </div>
-            <div class="col-lg-3">
-                <span class="pull-right">@Model.User.City, @Model.User.Country</span>
+            <div class="btn btn-danger col-lg-3" style="margin-top: 27px;">
+                @Html.ActionLink("Go back", null, null, null, new { href = Request.UrlReferrer, @style = "color:#ffffff;" })
             </div>
+
 
 
         </div>
 
-        <div class="row">
+        <div class="row" style="padding-left: 15px; padding-top: 15px; padding-right: 30px">
             <div class="col-lg-12">
-                <label>About me</label>
-                <span class="pull-left">@Model.User.AboutMe</span>
+                <label>About me :</label>
+                <span>@Model.User.AboutMe</span>
             </div>
         </div>
-      
 
-        <label>Reviews : </label>
-        @{ 
+        <label style="padding-left:15px; padding-top: 15px">Reviews : </label>
+        @{
             if (Model.Reviews.Count() > 0)
             {
-                foreach (var r in Model.Reviews)
-                {
+                <ul class="list-group">
+                    @foreach (var r in Model.Reviews)
+                    {
+                        <li class="list-group-item">
+                            <div class="row" style="padding-left:15px; padding-right: 30px; padding-bottom: 10px">
+                                <div class="col-lg-9 ">
+                                    <span class="pull-left"> @r.Description</span>
+                                </div>
+                                <div class="col-lg-3">
+                                    <span class="pull-right"><strong>@r.Recommendation, @r.WrittenByName</strong></span>
+                                </div>
 
-        <div class="row">
-            <div class="col-lg-10">
-                <span class="pull-left"> @r.Description</span>
-            </div>
-            <div class="col-lg-2 col-lg-pull-2">
-                <span class="pull-right"> @r.Recommendation, @r.WrittenByName</span>
-            </div>
 
-
-        </div>
+                            </div>
+                        </li>
 
                     }
-                }
-                else
-                {
-                   <h3><strong>No reviews</strong></h3>
-                }
+                </ul>
             }
+            else
+            {
+                <h3><strong>No reviews</strong></h3>
+            }
+        }
 
     </div>
 </body>

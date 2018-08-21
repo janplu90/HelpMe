@@ -43,13 +43,13 @@
         }
         </style>
 </head>
-<body>
+<body style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
     
         <div class="container-fluid">
             <div class="panel">
                 <div class="panel-heading">
                     <div class="imgcontainer">
-                        <img src="~/Source/loginimage.png" alt="Avatar" class="avatar">
+                        <img src="~/Source/loginimage3.png" alt="Avatar" class="avatar">
                     </div>
                 </div>
                 @if (Model != null)
@@ -75,8 +75,8 @@
                         </div>
                             <div class="form-group">
                                 <div class="btn-group-vertical">
-                                    <input type="submit" value="Log in" class="btn btn-primary" />
-                                    <div class="btn btn-success">
+                                    <input type="submit" value="Log in" class="btn btn-primary"/>
+                                    <div class="btn btn-info">
                                         @Html.ActionLink("Register", "RegisterForm", null, new { @style = "color:#ffffff;" })
                                     </div>
                                     

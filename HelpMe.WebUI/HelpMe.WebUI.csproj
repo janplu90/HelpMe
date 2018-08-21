@@ -161,6 +161,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Source\loginimage.png" />
+    <Content Include="Source\loginimage2.png" />
+    <Content Include="Source\loginimage3.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

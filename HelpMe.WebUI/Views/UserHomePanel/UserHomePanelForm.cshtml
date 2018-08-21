@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>UserHomePanelForm</title>
 </head>
-<body>
+<body style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
     <div> 
        
 @foreach (var e in Model.Events)
@@ -39,14 +39,14 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <span class="pull-right" style="padding-top:15px">@e.Date</span>
-                <span class="pull-right" style="margin-left:25px">@e.Place</span>
+                <text class="pull-right" style="">@e.Date</text>
+                <span class="pull-right" style="margin-top:10px; margin-left:40px">@e.Place</span>
             </div>
 
            
         </div>
         <div class="row" style="padding-top:15px">
-            <div class="btn btn-success pull-right col-lg-6">
+            <div class="btn btn-primary pull-right col-lg-6">
                 @Html.ActionLink("Help", "AcceptEvent", "Event", new { eventID = e.EventID }, new { @style = "color:#ffffff;" })
             </div>
             <div class="btn btn-info pull-right col-lg-6">
