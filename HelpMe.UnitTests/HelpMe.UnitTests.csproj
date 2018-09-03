@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +106,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HelpMe.Domain\HelpMe.Domain.csproj">
+      <Project>{C39272FF-F19D-404C-A1CE-B5112BA8C968}</Project>
+      <Name>HelpMe.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HelpMe.WebUI\HelpMe.WebUI.csproj">
       <Project>{ef6d614c-2969-413c-afbb-2b8c5c6bcbaa}</Project>
       <Name>HelpMe.WebUI</Name>
